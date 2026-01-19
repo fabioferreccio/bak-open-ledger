@@ -2,7 +2,7 @@
 // 1. Imports
 import { CsGuid, CsDateTime, CsDecimal, CsString } from "dotnet-node-core";
 import { JournalEntry, JournalEntryLine } from "../../../../src/Core/Domain/Entities";
-import { DebitCredit, EntryStatus } from "../../../../src/Core/Domain/Enums";
+import { DebitCredit } from "../../../../src/Core/Domain/Enums";
 import { prismaMock } from "../../../helpers/prismaMock";
 import { JournalEntryRepository } from "../../../../src/Infrastructure/Persistence/Repositories/JournalEntryRepository";
 import { Prisma, JournalEntry as PJournalEntry, JournalEntryLine as PLine } from "@prisma/client";

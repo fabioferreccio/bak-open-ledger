@@ -1,7 +1,7 @@
 import { JournalEntry as PrismaJournalEntry, JournalEntryLine as PrismaJournalEntryLine, Prisma } from "@prisma/client";
 import { JournalEntry, JournalEntryLine } from "../../../Core/Domain/Entities";
-import { CsGuid, CsDateTime, CsDecimal, CsString, CsInt32 } from "dotnet-node-core";
-import { EntryStatus, EntrySource, DebitCredit } from "../../../Core/Domain/Enums";
+import { CsGuid, CsDateTime, CsDecimal, CsString } from "dotnet-node-core";
+import { EntryStatus, DebitCredit } from "../../../Core/Domain/Enums";
 import { InvalidOperationException } from "../../../Core/Domain/Exceptions";
 
 export type JournalEntryWithLines = PrismaJournalEntry & { lines: PrismaJournalEntryLine[] };
@@ -126,7 +126,9 @@ export class JournalEntryMapper {
             id: entity.Id.ToString(),
             tenant: { connect: { id: entity.TenantId.ToString() } },
             // Accessing internal Value of CsDateTime wrapper
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             transactionDate: (entity.PostingDate as any).Value || new Date(),
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             postingDate: (entity.PostingDate as any).Value || new Date(),
             status: status,
             description: "Journal Entry",
