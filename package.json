@@ -1,0 +1,29 @@
+{
+  "name": "bak-open-ledger",
+  "version": "0.0.0",
+  "description": "BAK Open Compatibility Ledger",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "db:migrate": "prisma migrate dev",
+    "db:seed": "ts-node prisma/seed.ts",
+    "db:studio": "prisma studio"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^25.0.9",
+    "prisma": "^5.22.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "dotenv": "^17.2.3",
+    "dotnet-node-core": "https://github.com/fabioferreccio/dotnet-node-core/archive/refs/tags/v0.6.0.tar.gz",
+    "jose": "^6.1.3"
+  }
+}
