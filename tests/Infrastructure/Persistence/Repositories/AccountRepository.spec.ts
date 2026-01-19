@@ -78,7 +78,7 @@ describe("AccountRepository", () => {
 
         expect(result).toBeDefined();
         // Check if List has .Count or .length or .ToArray()
-        expect(result.ToArray().length).toBe(1); 
+        expect(result.ToArray().length).toBe(1);
         expect(prismaMock.account.findMany).toHaveBeenCalledWith({
             where: { tenantId: tenantId.ToString() },
         });
@@ -90,7 +90,7 @@ describe("AccountRepository", () => {
             tenantId,
             CsString.From("1002"),
             CsString.From("Bank"),
-            AccountType.Asset
+            AccountType.Asset,
         );
 
         await repository.AddAsync(entity);
@@ -111,7 +111,7 @@ describe("AccountRepository", () => {
             tenantId,
             CsString.From("1002"),
             CsString.From("Bank Updated"),
-            AccountType.Asset
+            AccountType.Asset,
         );
 
         await repository.UpdateAsync(entity);

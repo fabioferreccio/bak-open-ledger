@@ -53,7 +53,7 @@ describe("TenantRepository", () => {
             CsString.From("TEST"),
             CsInt32.From(12),
             CsString.From("USD"),
-            CsBoolean.From(true)
+            CsBoolean.From(true),
         );
 
         await repository.AddAsync(entity);
@@ -73,7 +73,7 @@ describe("TenantRepository", () => {
             CsString.From("UPDTEST"),
             CsInt32.From(1),
             CsString.From("EUR"),
-            CsBoolean.From(false)
+            CsBoolean.From(false),
         );
 
         await repository.UpdateAsync(entity);

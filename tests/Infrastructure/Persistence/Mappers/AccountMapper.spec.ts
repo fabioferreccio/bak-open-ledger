@@ -276,7 +276,7 @@ describe("AccountMapper - ParentId Logic", () => {
             CsString.From("1002"),
             CsString.From("Bank"),
             AccountType.Asset,
-            parentId // Present
+            parentId, // Present
         );
 
         const input = AccountMapper.toPersistence(entity);
@@ -292,7 +292,7 @@ describe("AccountMapper - ParentId Logic", () => {
             CsString.From("1001"),
             CsString.From("Cash"),
             AccountType.Asset,
-            undefined // Absent
+            undefined, // Absent
         );
 
         const input = AccountMapper.toPersistence(entity);
