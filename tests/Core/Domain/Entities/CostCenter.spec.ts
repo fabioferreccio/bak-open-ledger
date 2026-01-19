@@ -30,4 +30,24 @@ describe("CostCenter Entity", () => {
             new CostCenter(CsGuid.NewGuid(), tenantId, CsString.From("CC01"), CsString.From(""), CsBoolean.From(true));
         }).toThrow("CostCenter Name cannot be empty");
     });
+
+    // Tenant Isolation / Type Safety
+    it("should store the exact TenantId instance and preserve type", () => {
+        // Arrange
+        const specificTenantId = CsGuid.NewGuid();
+        const cc = new CostCenter(
+            CsGuid.NewGuid(),
+            specificTenantId,
+            CsString.From("CC-SAFE"),
+            CsString.From("Type Safety Check"),
+            CsBoolean.From(true),
+        );
+
+        // Act
+        const storedTenantId = cc.TenantId;
+
+        // Assert
+        expect(storedTenantId).toBe(specificTenantId); // exact instance check
+        expect(storedTenantId).toBeInstanceOf(CsGuid); // type check
+    });
 });
