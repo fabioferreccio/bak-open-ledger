@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import {
-    CreateJournalEntryRequest,
-    CreateJournalEntryUseCase
-} from "../../../../../../src/Core/Application/UseCases/JournalEntries/CreateJournalEntry/CreateJournalEntryUseCase";
+import { CreateJournalEntryRequest } from "../../../../../../src/Core/Application/UseCases/JournalEntries/DTOs";
+import { CreateJournalEntryUseCase } from "../../../../../../src/Core/Application/UseCases/JournalEntries/CreateJournalEntry/CreateJournalEntryUseCase";
 import { IJournalEntryRepository } from "../../../../../../src/Core/Interfaces/Repositories/IJournalEntryRepository";
 import { mockDeep, mockReset } from "jest-mock-extended";
 import { CsGuid, CsDecimal } from "dotnet-node-core";
@@ -87,10 +85,10 @@ describe("CreateJournalEntryUseCase", () => {
 
         // Assert
         expect(response.id).toBeDefined();
-        
+
         expect(mockRepo.AddAsync).toHaveBeenCalledTimes(1);
         const capturedEntry = mockRepo.AddAsync.mock.calls[0][0] as JournalEntry;
-        
+
         const line = capturedEntry.Lines.ToArray()[0];
         expect(line.CostCenterId).toBeDefined();
         expect(line.CostCenterId!.ToString()).toBe(costCenterId);

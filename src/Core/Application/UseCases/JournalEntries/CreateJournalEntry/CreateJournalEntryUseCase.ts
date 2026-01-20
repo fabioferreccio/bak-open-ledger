@@ -5,23 +5,7 @@ import { CsGuid, CsDateTime, CsDecimal, CsString } from "dotnet-node-core";
 import { DebitCredit } from "../../../../Domain/Enums";
 import { InvalidOperationException } from "../../../../Domain/Exceptions";
 
-export interface CreateJournalEntryLineRequest {
-    accountId: string;
-    amount: number;
-    direction: "Debit" | "Credit";
-    description: string;
-    costCenterId?: string;
-}
-
-export interface CreateJournalEntryRequest {
-    tenantId: string;
-    postingDate: Date;
-    lines: CreateJournalEntryLineRequest[];
-}
-
-export interface CreateJournalEntryResponse {
-    id: string;
-}
+import { CreateJournalEntryRequest, CreateJournalEntryResponse } from "../DTOs";
 
 export class CreateJournalEntryUseCase implements IUseCase<CreateJournalEntryRequest, CreateJournalEntryResponse> {
     constructor(private readonly _journalEntryRepository: IJournalEntryRepository) {}
