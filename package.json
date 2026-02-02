@@ -4,6 +4,8 @@
   "description": "BAK Open Compatibility Ledger",
   "main": "index.js",
   "scripts": {
+    "cli": "ts-node -r tsconfig-paths/register src/Presentation/CLI/Program.ts",
+    "cli:debug": "node --inspect-brk -r ts-node/register -r tsconfig-paths/register src/Presentation/CLI/Program.ts",
     "test": "jest",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down",
@@ -32,12 +34,16 @@
     "prisma": "^5.22.0",
     "ts-jest": "^29.4.6",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.9.3"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",
     "dotenv": "^17.2.3",
-    "dotnet-node-core": "https://github.com/fabioferreccio/dotnet-node-core/archive/refs/tags/v0.6.0.tar.gz",
+    "dotnet-node-core": "github:fabioferreccio/dotnet-node-core",
     "jose": "^6.1.3"
+  },
+  "overrides": {
+    "diff": "^8.0.3"
   }
 }

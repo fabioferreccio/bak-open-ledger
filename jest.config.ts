@@ -7,7 +7,6 @@ const config: Config = {
   testMatch: ["**/tests/**/*.spec.ts"],
   collectCoverageFrom: ["src/**/*.ts", "!src/**/index.ts", "!src/Infrastructure/Persistence/Prisma/PrismaClientInstance.ts"],
   moduleNameMapper: {
-    "^dotnet-node-core$": "<rootDir>/node_modules/dotnet-node-core/src/index.ts"
   },
   transform: {
     "^.+\\.tsx?$": "ts-jest"

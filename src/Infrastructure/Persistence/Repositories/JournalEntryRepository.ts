@@ -1,9 +1,10 @@
-import { CsGuid, List } from "dotnet-node-core";
+import { CsGuid, List, Injectable } from "dotnet-node-core";
 import { IJournalEntryRepository } from "../../../Core/Interfaces/Repositories";
 import { JournalEntry } from "../../../Core/Domain/Entities/JournalEntry";
 import { PrismaClientInstance } from "../Prisma/PrismaClientInstance";
 import { JournalEntryMapper } from "../Mappers/JournalEntryMapper";
 
+@Injectable()
 export class JournalEntryRepository implements IJournalEntryRepository {
     async GetByIdAsync(id: CsGuid): Promise<JournalEntry | null> {
         const raw = await PrismaClientInstance.Instance.journalEntry.findUnique({

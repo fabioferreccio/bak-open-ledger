@@ -1,14 +1,15 @@
 import { IUseCase } from "../../../../Interfaces/UseCases/IUseCase";
 import { IJournalEntryRepository } from "../../../../Interfaces/Repositories/IJournalEntryRepository";
 import { JournalEntry, JournalEntryLine } from "../../../../Domain/Entities";
-import { CsGuid, CsDateTime, CsDecimal, CsString } from "dotnet-node-core";
+import { CsGuid, CsDateTime, CsDecimal, CsString, Injectable, Inject } from "dotnet-node-core";
 import { DebitCredit } from "../../../../Domain/Enums";
 import { InvalidOperationException } from "../../../../Domain/Exceptions";
 
 import { CreateJournalEntryRequest, CreateJournalEntryResponse } from "../DTOs";
 
+@Injectable()
 export class CreateJournalEntryUseCase implements IUseCase<CreateJournalEntryRequest, CreateJournalEntryResponse> {
-    constructor(private readonly _journalEntryRepository: IJournalEntryRepository) {}
+    constructor(@Inject("IJournalEntryRepository") private readonly _journalEntryRepository: IJournalEntryRepository) {}
 
     public async execute(request: CreateJournalEntryRequest): Promise<CreateJournalEntryResponse> {
         // 1. Convert DTO primitives to Domain Value Objects

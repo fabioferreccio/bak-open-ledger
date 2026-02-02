@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import { Injectable } from "dotnet-node-core";
 
 // Prevent multiple instances in development due to hot reloading
 const globalForPrisma = global as unknown as { prisma: PrismaClient };

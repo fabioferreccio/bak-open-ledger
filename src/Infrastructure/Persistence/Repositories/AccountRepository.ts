@@ -1,9 +1,10 @@
-import { CsGuid, List } from "dotnet-node-core";
+import { CsGuid, List, Injectable } from "dotnet-node-core";
 import { IAccountRepository } from "../../../Core/Interfaces/Repositories";
 import { Account } from "../../../Core/Domain/Entities/Account";
 import { PrismaClientInstance } from "../Prisma/PrismaClientInstance";
 import { AccountMapper } from "../Mappers/AccountMapper";
 
+@Injectable()
 export class AccountRepository implements IAccountRepository {
     async GetByIdAsync(id: CsGuid): Promise<Account | null> {
         const raw = await PrismaClientInstance.Instance.account.findUnique({

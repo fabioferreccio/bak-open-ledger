@@ -1,9 +1,10 @@
-import { CsGuid } from "dotnet-node-core";
 import { ITenantRepository } from "../../../Core/Interfaces/Repositories";
 import { Tenant } from "../../../Core/Domain/Entities/Tenant";
 import { PrismaClientInstance } from "../Prisma/PrismaClientInstance";
 import { TenantMapper } from "../Mappers/TenantMapper";
+import { CsGuid, Injectable } from "dotnet-node-core";
 
+@Injectable()
 export class TenantRepository implements ITenantRepository {
     async GetByIdAsync(id: CsGuid): Promise<Tenant | null> {
         const raw = await PrismaClientInstance.Instance.tenant.findUnique({

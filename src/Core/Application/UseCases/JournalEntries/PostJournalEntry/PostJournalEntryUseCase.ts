@@ -1,12 +1,12 @@
-import { CsGuid } from "dotnet-node-core";
-
+import { CsGuid, Inject, Injectable } from "dotnet-node-core";
 import { InvalidOperationException } from "../../../../Domain/Exceptions";
 import { IJournalEntryRepository } from "../../../../Interfaces/Repositories/IJournalEntryRepository";
 import { IUseCase } from "../../../../Interfaces/UseCases/IUseCase";
 import { PostJournalEntryRequest } from "../DTOs";
 
+@Injectable()
 export class PostJournalEntryUseCase implements IUseCase<PostJournalEntryRequest, void> {
-    constructor(private readonly _repository: IJournalEntryRepository) {}
+    constructor(@Inject("IJournalEntryRepository") private readonly _repository: IJournalEntryRepository) {}
 
     public async execute(request: PostJournalEntryRequest): Promise<void> {
         const id = CsGuid.Parse(request.id);
