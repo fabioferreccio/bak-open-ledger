@@ -75,9 +75,13 @@ enum DebitCredit {
 
 /// Represents a distinct business unit or organization.
 model Tenant {
-  id                 String   @id @default(uuid())
-  name               String
-  slug               String   @unique
+  id   String @id @default(uuid())
+  name String
+  slug String @unique
+
+  /// Defines the structural end of the fiscal cycle (1-12). 
+  /// Example: 12 = Jan-Dec cycle. 
+  /// NOTE: This does NOT define the operational start date. For visibility rules, a separate 'startDate' would be required.
   fiscalYearEndMonth Int // 1-12
   reportingCurrency  String   @db.VarChar(3) // ISO 4217 Code
   isActive           Boolean  @default(true)

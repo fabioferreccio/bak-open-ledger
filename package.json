@@ -4,8 +4,9 @@
   "description": "BAK Open Compatibility Ledger",
   "main": "index.js",
   "scripts": {
-    "cli": "ts-node -r tsconfig-paths/register src/Presentation/CLI/Program.ts",
-    "cli:debug": "node --inspect-brk -r ts-node/register -r tsconfig-paths/register src/Presentation/CLI/Program.ts",
+    "demo": "ts-node -r tsconfig-paths/register src/Presentation/CLI/Demo.ts",
+    "demo:debug": "node --inspect-brk -r ts-node/register -r tsconfig-paths/register src/Presentation/CLI/Demo.ts",
+    "cli": "ts-node -r tsconfig-paths/register src/Presentation/CLI/Main.ts",
     "test": "jest",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down",
@@ -40,7 +41,7 @@
   "dependencies": {
     "@prisma/client": "^5.22.0",
     "dotenv": "^17.2.3",
-    "dotnet-node-core": "github:fabioferreccio/dotnet-node-core",
+    "dotnet-node-core": "github:fabioferreccio/dotnet-node-core#v0.6.13",
     "jose": "^6.1.3"
   },
   "overrides": {
